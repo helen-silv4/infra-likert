@@ -19,7 +19,7 @@ Infraestrutura como código (Terraform) responsável pelo provisionamento das ta
 
 | Atributo | Tipo | Descrição |
 |---|---|---|
-| `cod_avaliacao` (PK) | string | Identificador único da avaliação |
+| `id_avaliacao` (PK) | string | Identificador único da avaliação |
 | `data_hora_avaliacao` | string | Data/hora do envio da avaliação |
 | `descricao_fluxo` | string | Identifica o fluxo/campanha ao qual a avaliação pertence |
 | `nota_avaliacao` | int | Nota da escala Likert (1 a 5) |
