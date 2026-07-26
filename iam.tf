@@ -50,7 +50,8 @@ resource "aws_iam_policy" "policy_pipeline" {
         Effect = "Allow"
         Action = [
           "s3:GetObject",
-          "s3:PutObject"
+          "s3:PutObject",
+          "s3:DeleteObject"
         ]
         Resource = "arn:aws:s3:::infra-likert-tfstate/*"
       },
@@ -60,6 +61,7 @@ resource "aws_iam_policy" "policy_pipeline" {
         Action = [
           "dynamodb:CreateTable",
           "dynamodb:DescribeTable",
+          "dynamodb:DescribeContinuousBackups",
           "dynamodb:UpdateTable",
           "dynamodb:DeleteTable",
           "dynamodb:TagResource",
@@ -76,7 +78,8 @@ resource "aws_iam_policy" "policy_pipeline" {
         Action = [
           "iam:GetOpenIDConnectProvider",
           "iam:GetRole",
-          "iam:ListAttachedRolePolicies"
+          "iam:ListAttachedRolePolicies",
+          "iam:ListRolePolicies"
         ]
         Resource = [
           aws_iam_openid_connect_provider.github_provider.arn,
