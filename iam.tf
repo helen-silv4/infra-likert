@@ -90,7 +90,8 @@ resource "aws_iam_policy" "policy_pipeline" {
         ]
         Resource = [
           aws_iam_openid_connect_provider.github_provider.arn,
-          aws_iam_role.role_github_actions.arn
+          aws_iam_role.role_github_actions.arn,
+          "arn:aws:iam::${data.aws_caller_identity.current_account.account_id}:policy/infra-likert-pipeline-policy"
         ]
       }
     ]
