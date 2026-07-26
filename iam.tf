@@ -62,9 +62,12 @@ resource "aws_iam_policy" "policy_pipeline" {
           "dynamodb:CreateTable",
           "dynamodb:DescribeTable",
           "dynamodb:DescribeContinuousBackups",
+          "dynamodb:DescribeTimeToLive",
+          "dynamodb:DescribeKinesisStreamingDestination",
           "dynamodb:UpdateTable",
           "dynamodb:DeleteTable",
           "dynamodb:TagResource",
+          "dynamodb:UntagResource",
           "dynamodb:ListTagsOfResource"
         ]
         Resource = [
@@ -79,7 +82,11 @@ resource "aws_iam_policy" "policy_pipeline" {
           "iam:GetOpenIDConnectProvider",
           "iam:GetRole",
           "iam:ListAttachedRolePolicies",
-          "iam:ListRolePolicies"
+          "iam:ListRolePolicies",
+          "iam:ListInstanceProfilesForRole",
+          "iam:GetPolicy",
+          "iam:GetPolicyVersion",
+          "iam:ListPolicyVersions"
         ]
         Resource = [
           aws_iam_openid_connect_provider.github_provider.arn,
