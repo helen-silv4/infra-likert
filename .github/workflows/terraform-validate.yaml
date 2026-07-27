@@ -1,0 +1,30 @@
+name: Terraform Validate
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - develop
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.15.7
+
+      - name: Terraform FMT (formatação)
+        run: terraform fmt -check -recursive
+
+      - name: Terraform init
+        run: terraform init -backend=false # pula a etapa de configurar o backend S3
+
+      - name: Terraform Validate (sintaxe)
+        run: terraform validate
+      
